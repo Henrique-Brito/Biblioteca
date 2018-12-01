@@ -1,6 +1,6 @@
 
 //   Complexidade
-// Build - O(n)
+// Build - O(|s|)
 // Get_hash - O(1)
 //
 //   P e M
