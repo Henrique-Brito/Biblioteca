@@ -26,7 +26,7 @@ ll hash[MAX], pwr[MAX];
 const ll p = 31, m = 1e9+7;
 int n; string s;
 
-void build() {
+void build(){
 	pwr[0] = 1;
 	for( int i=1; i<n; i++ ){
     pwr[i] = pwr[i-1]*p % m;
@@ -37,7 +37,7 @@ void build() {
   }
 }
 
-ll get_hash(int i, int j) {
+ll get_hash(int i, int j){
 	if ( i == 0 ){
     return hash[j];
   }
