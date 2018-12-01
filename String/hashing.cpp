@@ -22,7 +22,7 @@
 
 typedef long long ll;
 
-ll hash[MAX], pwr[MAX];
+ll h[MAX], pwr[MAX];
 const ll p = 31, m = 1e9+7;
 int n; string s;
 
@@ -31,15 +31,15 @@ void build(){
 	for( int i=1; i<n; i++ ){
     pwr[i] = pwr[i-1]*p % m;
   }
-	hash[0] = s[0];
+	h[0] = s[0];
 	for( int i=1; i<n; i++ ){
-    hash[i] = (hash[i-1]*p + s[i]) % m;
+    h[i] = (h[i-1]*p + s[i]) % m;
   }
 }
 
 ll get_hash(int i, int j){
 	if ( i == 0 ){
-    return hash[j];
+    return h[j];
   }
-	return (hash[j] - hash[i-1]*pwr[j-i+1] % m + m) % m;
+	return (h[j] - h[i-1]*pwr[j-i+1] % m + m) % m;
 }
