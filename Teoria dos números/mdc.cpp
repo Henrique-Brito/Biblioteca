@@ -1,6 +1,5 @@
 
-// Complexidade - O(h)
-// h = numero de digitos de b (menor número)
+// Complexidade - O(log min(a,b))
 
 int mdc(int a, int b){
   if( !b ){
@@ -8,4 +7,14 @@ int mdc(int a, int b){
   }else{
     return mdc(b, a%b);
   }
+}
+
+int mdc(int a, int b){
+  while( b ){
+    a = a%b;
+    int aux = a;
+    a = b;
+    b = aux;
+  }
+  return b;
 }
