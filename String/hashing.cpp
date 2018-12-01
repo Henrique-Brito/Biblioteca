@@ -31,15 +31,15 @@ void build(){
   for( int i=1; i<n; i++ ){
     pwr[i] = pwr[i-1]*p % m;
   }
-	h[0] = s[0];
-	for( int i=1; i<n; i++ ){
+  h[0] = s[0];
+  for( int i=1; i<n; i++ ){
     h[i] = (h[i-1]*p + s[i]) % m;
   }
 }
 
 ll get_hash(int i, int j){
-	if ( i == 0 ){
+  if ( i == 0 ){
     return h[j];
   }
-	return (h[j] - h[i-1]*pwr[j-i+1] % m + m) % m;
+  return (h[j] - h[i-1]*pwr[j-i+1] % m + m) % m;
 }
