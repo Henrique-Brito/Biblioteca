@@ -8,7 +8,7 @@
 #define f first
 #define s second
 const int INF = 0x3f3f3f3f;
-const int MAX = (int)10e5+10;
+const int MAX = (int)1e5+10;
 
 vector<pair< int, int > > g[MAX];
 int n, d[MAX];
