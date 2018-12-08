@@ -12,7 +12,7 @@ typedef long long int ll;
 const int INF = 0x3f3f3f3f;
 const ll LINF = 0x3f3f3f3f3f3f3f3fll;
 
-const int MAX = (int)10e5+10;
+const int MAX = (int)1e5+10;
 
 int main(int argc, char const *argv[]) {
 
