@@ -35,15 +35,15 @@ ll query(int at, int b, int e, int qb, int qe){
 }
 
 void update(int at, int b, int e, int pos, int x){
-	if( b==e ){
-		seg[at] = x;
-		return;
-	}
-	int m = (b+e)/2;
-	if( pos <= m ){
-		update(2*at, b, m, pos, x);
-	}else{
-		update(2*at +1, m+1, e, pos, x);
-	}
-	seg[at] = seg[2*at] + seg[2*at +1];
+  if( b==e ){
+    seg[at] = x;
+    return;
+  }
+  int m = (b+e)/2;
+  if( pos <= m ){
+    update(2*at, b, m, pos, x);
+  }else{
+    update(2*at +1, m+1, e, pos, x);
+  }
+  seg[at] = seg[2*at] + seg[2*at +1];
 }
