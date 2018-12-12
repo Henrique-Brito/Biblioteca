@@ -5,8 +5,6 @@
 
 // Complexidade - O(n*log(log(n)))
 
-typedef long long ll;
-
 int lim;
 vector<bool> is_prime;
 
