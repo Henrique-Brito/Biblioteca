@@ -18,8 +18,6 @@
 // Se continuar com colisão, fazer 2 hashs
 // Probabilidade de colisão - 1/M
 
-// Creditos: Bruno Maletta - https://github.com/brunomaletta
-
 typedef long long ll;
 
 ll h[MAX], pwr[MAX];
