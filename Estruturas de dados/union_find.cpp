@@ -1,15 +1,19 @@
 
-// Union Find com path compression
+// Union Find com path compression e union by rank
 // Complexidade
-// Find - O(log(n))
-// Union - O(log(n))
+// Build - O(n)
+// Find - O(1)
+// Union - O(1)
 
 const ll MAX = (ll)3e5 + 10;
 
-int n, id[MAX];
+int n, id[MAX], size[MAX];
 
 void build(){
-	for( int i=0; i<n; i++ ) id[i] = i;
+	for( int i=0; i<n; i++ ){
+		id[i] = i;
+		size[i] = 1;
+	}
 }
 
 int find(int k){
@@ -17,5 +21,11 @@ int find(int k){
 }
 
 void unite(int a, int b){
-	id[find(a)] = find(b);
+	a = find(a);
+	b = find(b);
+	if( size[a] > size[b] ){
+		swap(a, b);
+	}
+	id[a] = b;
+	size[b] += size[a];
 }
