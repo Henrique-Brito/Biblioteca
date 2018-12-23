@@ -9,12 +9,15 @@ using namespace std;
 #define BUFF ios::sync_with_stdio(false)
 
 typedef long long int ll;
+typedef pair<int,int> pii;
+typedef pair<ll,ll> pll;
+
 const int INF = 0x3f3f3f3f;
 const ll LINF = 0x3f3f3f3f3f3f3f3fll;
 
 const int MAX = (int)1e5+10;
 
-int main(int argc, char const *argv[]) {
+int main(){
 
   BUFF;
 
