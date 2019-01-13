@@ -6,7 +6,7 @@ using namespace std;
 #define pb push_back
 #define f first
 #define s second
-#define BUFF ios::sync_with_stdio(false)
+#define BUFF ios::sync_with_stdio(false); cin.tie(0);
 
 typedef long long int ll;
 typedef pair<int,int> pii;
