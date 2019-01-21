@@ -9,6 +9,7 @@ using namespace std;
 #define BUFF ios::sync_with_stdio(false); cin.tie(0);
 
 typedef long long int ll;
+typedef long double ld;
 typedef pair<int,int> pii;
 typedef pair<ll,ll> pll;
 
