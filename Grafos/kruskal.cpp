@@ -3,7 +3,7 @@
 
 // Usando Union Find com path compression em O(log(n))
 
-// Complexidade - O(m*log(n))
+// Complexidade - O(m*(log(n)+log(m))
 
 #define mp make_pair
 #define pb push_back
