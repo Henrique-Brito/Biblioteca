@@ -14,19 +14,20 @@
 
 struct persistent_dsu{
 
-  int n;
-  vector<int> id, size;
+  int dsu_size;
+  vector<int> id, comp_size;
   stack<int> stk;
 
   persistent_dsu(int in){
-    n = in;
-    id.resize(n);
-    size.resize(n);
-    for( int i=0; i<n; i++ ){
+    dsu_size = in;
+    id.resize(dsu_size);
+    comp_size.resize(dsu_size);
+    for( int i=0; i<dsu_size; i++ ){
       id[i] = i;
-      size[i] = 1;
+      comp_size[i] = 1;
     }
   }
+
   int find_current(int k){
   	return id[k] == k ? k : find_current(id[k]);
   }
@@ -45,11 +46,11 @@ struct persistent_dsu{
   void unite(int a, int b){
   	a = find_current(a);
   	b = find_current(b);
-  	if( size[a] > size[b] ){
+  	if( comp_size[a] > comp_size[b] ){
   		swap(a, b);
   	}
   	id[a] = b;
-  	size[b] += size[a];
+  	comp_size[b] += comp_size[a];
     stk.push(a);
   }
 
