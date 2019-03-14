@@ -14,33 +14,35 @@
 
 struct persistent_dsu{
 
-  int dsu_size;
-  vector<int> id, comp_size;
+  int dsu_size, tempo;
+  vector<int> comp_size;
+  vector<pii> id;
   stack<int> stk;
 
   persistent_dsu(int in){
     dsu_size = in;
+    tempo = 0;
     id.resize(dsu_size);
     comp_size.resize(dsu_size);
-    for( int i=0; i<dsu_size; i++ ){
-      id[i] = i;
+    for( int i=0; i<=dsu_size; i++ ){
+      id[i] = {i, tempo};
       comp_size[i] = 1;
     }
   }
 
   int find_current(int k){
-  	return id[k] == k ? k : find_current(id[k]);
+  	return id[k].f == k ? k : find_current(id[k].f);
   }
 
   int find_time(int k, int t){
-    if( !t ) return k;
-    return id[k] == k ? k : find_time(id[k], --t);
+    if( t < id[k].s ) return k;
+    return id[k].f == k ? k : find_time(id[k].f, t);
   }
 
   void roll_back(){
     if( stk.empty() ) return;
     int u = stk.top(); stk.pop();
-    id[u] = u;
+    id[u] = {u, --tempo};
   }
 
   void unite(int a, int b){
@@ -49,7 +51,7 @@ struct persistent_dsu{
   	if( comp_size[a] > comp_size[b] ){
   		swap(a, b);
   	}
-  	id[a] = b;
+  	id[a] = {b, ++tempo};
   	comp_size[b] += comp_size[a];
     stk.push(a);
   }
