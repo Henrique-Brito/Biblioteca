@@ -30,6 +30,8 @@ struct persistent_dsu{
     }
   }
 
+	persistent_dsu() : persistent_dsu(10){}
+
   int find_current(int k){
   	return id[k].f == k ? k : find_current(id[k].f);
   }
