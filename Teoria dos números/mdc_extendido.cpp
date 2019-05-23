@@ -18,3 +18,7 @@ int mdc_ext(int a, int b, int &x, int &y){
   y = x1;
   return d;
 }
+
+int inv_mod(int a, int b){
+	return 1<a ? b - inv(b%a,a)*b/a : 1;
+}
