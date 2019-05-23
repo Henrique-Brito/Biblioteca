@@ -7,6 +7,8 @@
 
 // Complexidade - O(rapidão)
 
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
+
 ll mul(ll x, ll y, ll mod) {
 	if (!y) return 0;
 
@@ -81,7 +83,7 @@ ll rho(ll n) {
 		ll x = 2, y = 2;
 		ll ciclo = 2, i = 0;
 
-		ll c = (rand() / (double) RAND_MAX) * (n - 1) + 1;
+		ll c = (rng() / (double) RAND_MAX) * (n - 1) + 1;
 		ll d = 1;
 
 		while (d == 1) {
