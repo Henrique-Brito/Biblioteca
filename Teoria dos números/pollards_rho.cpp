@@ -3,7 +3,6 @@
 
 // Fatora um número
 // Fatores não estão ordenados
-// Chamar srand(time(0)) na main
 
 // Complexidade - O(rapidão)
 
