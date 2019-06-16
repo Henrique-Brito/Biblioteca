@@ -1,4 +1,3 @@
-
 // Segment Tree
 
 // Acha a soma de um segmento qualquer
@@ -9,15 +8,15 @@
 // Query  -> O(log(n))
 // Update -> O(log(n))
 
-const int MAX = (int)2e5 + 10;
+const int MAX = (int)1e5 + 10;
 
 namespace seg{
 
   int n;
-  int vec[MAX];
+  ll *vec;
   ll seg[4*MAX];
 
-  ll make_node(int v){
+  ll make_node(ll v){
     return v;
   }
   ll make_neutro(){
@@ -36,6 +35,12 @@ namespace seg{
     build(2*at, l, m);
     build(2*at +1, m+1, r);
     seg[at] = combina(seg[2*at], seg[2*at +1]);
+  }
+
+  void build(int n_, ll *vec_){
+    n = n_;
+    vec = vec_;
+    build();
   }
 
   ll query(int ql, int qr, int at=1, int l=0, int r=n-1 ){
@@ -62,4 +67,5 @@ namespace seg{
     }
     seg[at] = combina(seg[2*at], seg[2*at +1]);
   }
-}
+
+};
