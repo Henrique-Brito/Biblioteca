@@ -1,5 +1,5 @@
 
-// Acha pontos de arculação
+// Acha pontos de articulação
 
 // Complexidade - O( n+m )
 
