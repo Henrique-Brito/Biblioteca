@@ -2,7 +2,8 @@
 
 using namespace std;
 
-#define mp make_pair
+#define endl '\n'
+
 #define pb push_back
 #define f first
 #define s second
