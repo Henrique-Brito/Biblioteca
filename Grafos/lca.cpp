@@ -14,9 +14,9 @@ int in[MAX], out[MAX];
 int dp[MAX][LOG];
 vector<int> g[MAX];
 
-void dfs( int u, int pai ){
+void dfs( int u, int p ){
   in[u] = t++;
-  for( int e : g[u] ) if( e != pai ){
+  for( int e : g[u] ) if( e != p ){
     dp[e][0] = u;
     dfs(e, u);
   }
