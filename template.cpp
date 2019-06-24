@@ -7,7 +7,7 @@ using namespace std;
 #define pb push_back
 #define f first
 #define s second
-#define BUFF ios::sync_with_stdio(false); cin.tie(0);
+#define BUFF ios::sync_with_stdio(false);
 
 typedef long long int ll;
 typedef long double ld;
