@@ -1,4 +1,3 @@
-
 //   Complexidade
 // Build - O(|s|)
 // Operator() - O(1)
@@ -23,7 +22,6 @@ ll uniform(ll l, ll r){
 }
 
 struct str_hash{
-
 	int n;
 	ll p, mod;
 	vector<ll> h, pwr;
@@ -43,9 +41,14 @@ struct str_hash{
 
 	ll operator()(int i, int j){
   		if ( i == 0 ){
-    		return h[j];
+    			return h[j];
   		}
-  		return (h[j] - h[i-1]*pwr[j-i+1] % mod + mod) % mod;
+  		return (h[j] - ((h[i-1]*pwr[j-i+1])%mod) + mod) % mod;
 	}
 };
+
+// Problemas: 
+// https://codeforces.com/gym/101350/problem/I
+// https://codeforces.com/contest/1326/problem/D2
+// https://www.spoj.com/problems/DISUBSTR/
 
