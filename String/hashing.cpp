@@ -1,43 +1,51 @@
 
 //   Complexidade
 // Build - O(|s|)
-// Get_hash - O(1)
+// Operator() - O(1)
 //
-//   P e Mod
-// São primos positivos
+// mod deve ser um primo grande - 1e9+7 ou 1e9+9
 //
-//   P deve ser parecido ao número de caracteres
-// Só letra minúscula -> 31
-// Maiúscula e minúscula -> 53
-// Toda a ASCII -> 257
-//
-//   Mod deve ser grande
-// 1e9+7 ou 1e9+9
+// p deve ser maior que o tamanho do alfabeto e deve ser gerado de forma aleatória para evitar hacks
 //
 // Comparar somente strings do mesmo tamanho para evitar colisão
-// Se continuar com colisão, fazer 2 hashs
-// Probabilidade de colisão - 1/Mod
+// Houver colisão, fazer 2 hash's
+// Probabilidade de colisão de uma comparação - 1/Mod
+
+// Exemplo: str_hash(s, uniform(27, mod-1), mod), com mod = 1e9+7
 
 typedef long long ll;
 
-ll h[MAX], pwr[MAX];
-const ll p = 31, mod = 1e9+7;
-int n; string s;
+mt19937 rng((int) chrono::steady_clock::now().time_since_epoch().count());
 
-void build(){
-  pwr[0] = 1;
-  for( int i=1; i<n; i++ ){
-    pwr[i] = pwr[i-1]*p % mod;
-  }
-  h[0] = s[0];
-  for( int i=1; i<n; i++ ){
-    h[i] = (h[i-1]*p + s[i]) % mod;
-  }
+ll uniform(ll l, ll r){
+	uniform_int_distribution<ll> uid(l, r);
+	return uid(rng);
 }
 
-ll get_hash(int i, int j){
-  if ( i == 0 ){
-    return h[j];
-  }
-  return (h[j] - h[i-1]*pwr[j-i+1] % mod + mod) % mod;
-}
+struct str_hash{
+
+	int n;
+	ll p, mod;
+	vector<ll> h, pwr;
+
+	str_hash(){}
+
+	str_hash(string& s, ll _p, ll _mod) : n((int)s.size()), p(_p), mod(_mod), h(n), pwr(n){
+  		pwr[0] = 1;
+  		for( int i=1; i<n; i++ ){
+    			pwr[i] = pwr[i-1]*p % mod;
+  		}
+ 	 	h[0] = s[0];
+  		for( int i=1; i<n; i++ ){
+    			h[i] = (h[i-1]*p + s[i]) % mod;
+  		}
+	}
+
+	ll operator()(int i, int j){
+  		if ( i == 0 ){
+    		return h[j];
+  		}
+  		return (h[j] - h[i-1]*pwr[j-i+1] % mod + mod) % mod;
+	}
+};
+
